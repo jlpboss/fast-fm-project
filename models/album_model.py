@@ -4,12 +4,12 @@ from typing import Optional
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Text, Table
 
-from song_model import Song_Model
+# from models.song_model import Song_Model
 
-from base_model import Base
+from models.base_model import Base
 
 class Album_Model(Base):
-    __tablename__: "albums"
+    __tablename__ = "albums"
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     name: Mapped[str] = Column(String)
@@ -19,7 +19,7 @@ class Album_Model(Base):
 
 
 class Songs_to_Albums_Model(Base):
-    __tablename__: "songs_to_albums"
+    __tablename__ = "songs_to_albums"
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     song_id: Mapped[int] = mapped_column(ForeignKey("songs.id"))

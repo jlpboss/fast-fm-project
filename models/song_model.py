@@ -4,14 +4,14 @@ from typing import Optional
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Text, Table, Float, DateTime
 
-from playlist_model import Playlist_Model, Songs_to_Playlists_Model
-from album_model import Songs_to_Albums_Model
-from genre_model import Songs_to_Genres_Model
+# from models.playlist_model import Songs_to_Playlists_Model
+# from models.album_model import Songs_to_Albums_Model
+# from models.genre_model import Songs_to_Genres_Model
 
-from base_model import Base
+from models.base_model import Base
 
 class Song_Model(Base):
-    __tablename__: "songs"
+    __tablename__ = "songs"
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     title: Mapped[str] = Column(String)
