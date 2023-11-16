@@ -1,5 +1,6 @@
 from typing import List
 from typing import Optional
+from datetime import datetime
 
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Text, Table, Float, DateTime
@@ -17,7 +18,7 @@ class Song_Model(Base):
     title: Mapped[str] = Column(String)
     artist: Mapped[str] = Column(String)
     duration: Mapped[float] = Column(Float)
-    release: Mapped[str] = Column(DateTime)
+    release: datetime = Column(DateTime)
 
     playlist: Mapped[List["Songs_to_Playlists_Model"]] = relationship(back_populates="song")
     album: Mapped[List["Songs_to_Albums_Model"]] = relationship(back_populates="song")
