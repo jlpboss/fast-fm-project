@@ -12,7 +12,7 @@ class User_Model(Base):
     __tablename__ = "users"
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
-    username: Mapped[str] = Column(String)
+    username: Mapped[str] = Column(String, unique=True)
     fullname: Mapped[str] = Column(String)
     email: Mapped[str] = Column(String, unique=True)
     hashed_password: Mapped[str] = Column(String)
