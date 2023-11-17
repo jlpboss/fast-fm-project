@@ -1,0 +1,5 @@
+from schemas.album_schema import Album_Schema, Songs_to_Albums_schema
+from schemas.genre_schema import Genre_Schema, Songs_to_Genres_schema
+from schemas.playlist_schema import Playlist_Schema, Songs_to_Playlists_Schema
+from schemas.song_schema import Song_Schema
+from schemas.user_schema import User_Schema

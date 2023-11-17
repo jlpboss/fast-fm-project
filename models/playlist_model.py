@@ -17,7 +17,7 @@ class Playlist_Model(Base):
     owner_name: Mapped[str] = mapped_column(ForeignKey("users.username"))
 
     owner:Mapped["User_Model"] = relationship(back_populates="playlists")
-    songs: Mapped[List["Songs_to_Playlists_Model"]] = relationship(back_populates="song")
+    songs: Mapped[List["Songs_to_Playlists_Model"]] = relationship(back_populates="playlist")
     
 class Songs_to_Playlists_Model(Base):
     __tablename__ = "songs_to_playlists"
@@ -28,4 +28,4 @@ class Songs_to_Playlists_Model(Base):
     order: Mapped[int] = Column(Integer)
 
     song: Mapped[List["Song_Model"]] = relationship(back_populates="playlist")
-    playlist: Mapped["Playlist_Model"] = relationship(back_populates="owner")
+    playlist: Mapped["Playlist_Model"] = relationship(back_populates="songs")

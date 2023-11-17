@@ -1,17 +1,17 @@
 #user modle error
 from fastapi import FastAPI
-from models import Hero, Ability, AbilityType, Relationship, RelationshipType
+#from models import Hero, Ability, AbilityType, Relationship, RelationshipType
 from database import engine
 from sqlalchemy import select
-from schemas import HeroModel, AbilityModel, AbilityTypeModel, RelationshipModel, RelationshipTypeModel
+#from schemas import HeroModel, AbilityModel, AbilityTypeModel, RelationshipModel, RelationshipTypeModel
 from fastapi.responses import PlainTextResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
-from routers import heroes
+from routers import users_routes
 
 app = FastAPI()
-app.include_router(heroes.router)
+app.include_router(users_routes.router)
 
 origins = [
     "http://8000-coachhallso-fastapidock-5fztzl33j5c.ws-us106.gitpod.io",

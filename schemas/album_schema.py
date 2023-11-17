@@ -1,6 +1,6 @@
 from typing import Optional
 from pydantic import BaseModel
-from song_schema import Song_Schema
+from schemas.song_schema import Song_Schema
 
 class Songs_to_Albums_schema(BaseModel):
     id: int

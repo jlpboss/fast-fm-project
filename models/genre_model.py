@@ -14,7 +14,7 @@ class Genre_Model(Base):
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     name: Mapped[str] = Column(String)
 
-    songs: Mapped[List["Songs_to_Genres_Model"]] = relationship(back_populates="genre")
+    song: Mapped[List["Songs_to_Genres_Model"]] = relationship(back_populates="genre")
 
 class Songs_to_Genres_Model(Base):
     __tablename__ = "songs_to_genres"
@@ -23,5 +23,5 @@ class Songs_to_Genres_Model(Base):
     song_id: Mapped[int] = mapped_column(ForeignKey("songs.id"))
     genre_id: Mapped[int] = mapped_column(ForeignKey("genres.id"))
 
-    song: Mapped[List["Song_Model"]] = relationship(back_populates="genres")
-    genre: Mapped["Genre_Model"] = relationship(back_populates="songs")
+    song: Mapped[List["Song_Model"]] = relationship(back_populates="genre")
+    genre: Mapped["Genre_Model"] = relationship(back_populates="song")

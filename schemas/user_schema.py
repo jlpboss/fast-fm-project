@@ -1,6 +1,6 @@
 from typing import Optional
 from pydantic import BaseModel
-from playlist_schema import Playlist_Schema
+from schemas.playlist_schema import Playlist_Schema
 
 class User_Schema(BaseModel):
     id: int
