@@ -55,3 +55,17 @@ def get_users(db: Session):
 
     out = list(items.values())
     return out
+
+def remove_user(db: Session, id: int):
+    user = (
+        db.query(User_Model)
+        .options(
+            joinedload(User_Model.playlists).joinedload(Playlist_Model.songs).joinedload(Songs_to_Playlists_Model.song).joinedload(Song_Model.playlist)
+        )
+        .filter(User_Model.id == id)
+        .first()
+    )
+    user_copy = user
+    db.delete(user)
+    db.commit()
+    return user_copy

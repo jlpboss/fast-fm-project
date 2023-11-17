@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from fastapi import APIRouter, Depends, HTTPException, status
 from schemas.import_schemas import User_Schema
 from models.import_modles import User_Model
-from controllers.user_controller import create_user, get_users
+from controllers.user_controller import create_user, get_users, remove_user
 from database import SessionLocal
 
 router = APIRouter(
@@ -26,3 +26,8 @@ def Create_User(*, db: Session = Depends(get_db), user_in: User_Schema):
 def get_items(db: Session = Depends(get_db)):
     items = get_users(db)
     return items
+
+@router.delete("/delete/{user_id}", response_model=User_Schema)
+def remove_item(user_id: int, db: Session = Depends(get_db)):
+    user_copy = remove_user(db, user_id)
+    return user_copy
